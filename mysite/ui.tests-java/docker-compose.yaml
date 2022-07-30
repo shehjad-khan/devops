@@ -1,0 +1,28 @@
+version: '3'
+services:
+  tests:
+    environment:
+      - SELENIUM_BASE_URL=http://selenium-chrome:4444
+      - SELENIUM_BROWSER=chrome
+      - AEM_AUTHOR_URL
+      - AEM_AUTHOR_USERNAME
+      - AEM_AUTHOR_PASSWORD
+      - AEM_PUBLISH_URL
+      - AEM_PUBLISH_USERNAME
+      - AEM_PUBLISH_PASSWORD
+      - REPORTS_PATH=/tmp/reports/wdio-chrome
+      - SHARED_FOLDER=/tmp/shared
+      - HEADLESS_BROWSER
+    volumes:
+      - ./target/reports:/tmp/reports
+      - 'shared:/tmp/shared'
+      - 'shared:/usr/src/app/assets'
+    image: 'ui-test:latest'
+  selenium-chrome:
+    image: 'selenium/standalone-chrome-debug:latest'
+    ports:
+      - 4444:4444
+    volumes:
+      - 'shared:/tmp/shared'
+volumes:
+  shared:
