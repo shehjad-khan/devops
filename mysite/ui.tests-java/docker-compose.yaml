@@ -13,11 +13,12 @@ services:
       - REPORTS_PATH=/tmp/reports/wdio-chrome
       - SHARED_FOLDER=/tmp/shared
       - HEADLESS_BROWSER
+    shm_size: '2gb'
     volumes:
       - ./target/reports:/tmp/reports
       - 'shared:/tmp/shared'
       - 'shared:/usr/src/app/assets'
-    image: 'ui-test:latest'
+    image: '201076423/aem:java1'
   selenium-chrome:
     image: 'selenium/standalone-chrome-debug:latest'
     ports:

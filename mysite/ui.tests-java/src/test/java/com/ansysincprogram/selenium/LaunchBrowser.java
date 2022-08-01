@@ -12,7 +12,7 @@ public class LaunchBrowser {
 	@Test
 	public void myTest() throws MalformedURLException {
 		DesiredCapabilities dc = DesiredCapabilities.chrome();
-		URL url = new URL("http://localhost:4444/wd/hub");
+		URL url = new URL("http://selenium-chrome:4444/wd/hub");
 		RemoteWebDriver driver = new RemoteWebDriver(url, dc);
 		driver.get("https://www.ansys.com/");
 		String title = driver.getTitle();
